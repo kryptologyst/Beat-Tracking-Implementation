@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - model: baseline
+  - data: synthetic
+  - training: default
+
+# Project configuration
+project:
+  name: "beat_tracking_implementation"
+  version: "1.0.0"
+  description: "Modern beat tracking implementation for music information retrieval"
+
+# Paths
+paths:
+  data_dir: "data"
+  output_dir: "outputs"
+  checkpoint_dir: "checkpoints"
+  assets_dir: "assets"
+  logs_dir: "logs"
+
+# Device configuration
+device: "auto"  # auto, cpu, cuda, mps
+
+# Random seed for reproducibility
+seed: 42
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Privacy and ethics
+privacy:
+  anonymize_filenames: true
+  log_personal_info: false
+  disclaimer_required: true

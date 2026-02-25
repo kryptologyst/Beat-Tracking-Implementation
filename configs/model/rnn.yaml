@@ -1,0 +1,39 @@
+# @package model
+
+_target_: src.models.advanced.RNNBeatTracker
+
+# Model parameters
+name: "rnn_beat_tracker"
+description: "RNN-based beat tracker with temporal modeling"
+
+# Architecture parameters
+architecture:
+  input_dim: 128
+  hidden_dim: 256
+  num_layers: 2
+  dropout: 0.3
+  bidirectional: true
+  rnn_type: "LSTM"  # LSTM, GRU, RNN
+
+# Audio processing parameters
+audio:
+  sample_rate: 22050
+  hop_length: 512
+  n_fft: 2048
+  n_mels: 128
+
+# Training parameters
+training:
+  learning_rate: 0.001
+  batch_size: 32
+  sequence_length: 1000
+  weight_decay: 1e-5
+
+# Beat tracking parameters
+beat_tracking:
+  tempo_min: 60
+  tempo_max: 200
+  units: "time"
+  tightness: 400
+  trim: true
+  aggregate: "median"

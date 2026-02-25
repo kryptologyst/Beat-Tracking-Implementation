@@ -1,0 +1,23 @@
+# @package model
+
+_target_: src.models.baseline.BaselineBeatTracker
+
+# Model parameters
+name: "baseline"
+description: "Librosa-based baseline beat tracker"
+
+# Audio processing parameters
+audio:
+  sample_rate: 22050
+  hop_length: 512
+  n_fft: 2048
+  n_mels: 128
+
+# Beat tracking parameters
+beat_tracking:
+  tempo_min: 60
+  tempo_max: 200
+  units: "time"  # time or frames
+  tightness: 400
+  trim: true
+  aggregate: "median"

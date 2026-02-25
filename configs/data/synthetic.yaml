@@ -1,0 +1,36 @@
+# @package data
+
+_target_: src.data.synthetic.SyntheticBeatDataset
+
+# Dataset parameters
+name: "synthetic_beat_dataset"
+description: "Synthetic dataset for beat tracking evaluation"
+
+# Data generation parameters
+generation:
+  num_samples: 1000
+  duration_range: [30, 180]  # seconds
+  tempo_range: [60, 180]  # BPM
+  time_signature_range: [4, 4]  # 4/4 time signature
+  sample_rate: 22050
+  
+# Audio synthesis parameters
+synthesis:
+  instrument_types: ["kick", "snare", "hihat", "bass", "melody"]
+  volume_range: [0.3, 1.0]
+  reverb_prob: 0.3
+  noise_prob: 0.2
+  noise_level: 0.1
+
+# Split configuration
+splits:
+  train: 0.7
+  val: 0.15
+  test: 0.15
+
+# Data loading parameters
+loader:
+  batch_size: 16
+  num_workers: 4
+  shuffle: true
+  pin_memory: true

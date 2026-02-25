@@ -1,0 +1,39 @@
+# @package training
+
+_target_: src.train.trainer.Trainer
+
+# Training parameters
+epochs: 100
+early_stopping_patience: 10
+gradient_clip_norm: 1.0
+accumulate_grad_batches: 1
+
+# Optimizer parameters
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 0.001
+  weight_decay: 1e-5
+  betas: [0.9, 0.999]
+
+# Scheduler parameters
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  mode: "min"
+  factor: 0.5
+  patience: 5
+  verbose: true
+
+# Checkpointing
+checkpointing:
+  save_top_k: 3
+  monitor: "val_loss"
+  mode: "min"
+  save_last: true
+  every_n_epochs: 1
+
+# Logging
+logging:
+  log_every_n_steps: 50
+  val_check_interval: 1.0
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
